@@ -1,0 +1,12 @@
+<h1> User Profile </h1>
+
+	
+	<%= @user.name %><br>
+	<%= @user.username%>
+	<% if @users_boats %>
+		<%= @users_boats.each do |boat| %>
+			<%=boat.boat_id %>
+		<% end %>
+	<% end %>
+
+	<%= link_to 'add boat', new_boat_path%>

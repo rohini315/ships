@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ships</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div>
+	<h1><%= flash[:notice] if flash[:notice] %></h1>
+	<h1><%= flash[:error] if flash[:error] %></h1>
+</div>
+
+<nav>
+	<ul>
+	<% if current_user != nil%>
+		<%= link_to 'log-out', log_out_path %>
+		<%= link_to 'profile', user_path(current_user) %>
+	<%else%>
+		<%= link_to 'log-in', log_in_path %>
+	<%end%>
+	</ul>
+</nav>
+
+<%= yield %>
+
+</body>
+</html>

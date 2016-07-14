@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  container_size: 1
+  current_loc: MyString
+
+two:
+  name: MyString
+  container_size: 1
+  current_loc: MyString

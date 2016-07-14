@@ -1,0 +1,15 @@
+<h1>ADD A BOAT</h1>
+
+<%=form_for @boat do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %><br><br>
+	<%= f.label :current_loc %>
+	<%= f.select( :current_loc, options_for_select(@locs)) %>
+	<br><br>
+	<%= f.label :container_size %>
+	<%=f.number_field :container_size %><br>
+	<br>
+	<%= f.submit %>
+
+
+<% end %>
