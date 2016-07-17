@@ -2,7 +2,7 @@ class BoatsController < ApplicationController
 
 
 	def new
-		@locs=[[ "New York",0 ],["San Juan", 1],["Rio de Janeiro",2] ,["Zeebrugge", 3],["Shanghai",4], ["Calcutta",5],["Pusan",6],["Yokohama",7],["Derby",8],["Cape Town",9],["St. Petersburg",10]]
+		@locs = locs
 		@boat=Boat.new
 	end
 
@@ -10,6 +10,9 @@ class BoatsController < ApplicationController
 		@boat = Boat.create(boat_params)
 		if @boat.save
 			@user_boat = UsersBoat.create(boat_id: @boat.id, user_id: current_user.id)
+			redirect_to users_path(current_user.id)
+		else
+			redirect_to :back
 		end
 	end
 
@@ -17,9 +20,15 @@ class BoatsController < ApplicationController
 	end
 
 	def show
+		@boat = Boat.find(params[:id])
+		@jobs = Job.where(boat_id: @boat.id)
+		# Job.where(boat_id: @boat_id)
 	end
 
 	def destroy
+		@boat = Boat.find(params[:id])
+	    @boat.destroy
+	    redirect_to :back
 	end
 
 
@@ -27,4 +36,5 @@ class BoatsController < ApplicationController
 	def boat_params
 		params.require(:boat).permit(:name,:container_size,:current_loc)
 	end
+
 end

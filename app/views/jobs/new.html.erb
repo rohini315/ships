@@ -1,2 +1,21 @@
 <h1>Jobs#new</h1>
-<p>Find me in app/views/jobs/new.html.erb</p>
+
+
+<%=form_for @job, url: jobs_path do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %><br><br>
+	<%= f.label :origin %>
+	<%= f.select( :origin, options_for_select(locs)) %>
+	<br><br>
+	<%= f.label :dest %>
+	<%= f.select( :dest, options_for_select(locs)) %>
+	<br><br>
+	<%= f.label :container %>
+	<%=f.number_field :container %><br><br>
+	<%= f.label :cargo %>
+	<%= f.text_field :cargo %><br><br>
+	<%= f.label :cost %>
+	<%= f.number_field :cost %><br><br>
+	<%= f.hidden_field :boat_id, value: params[:id] %>
+	<%= f.submit %>
+<% end %>

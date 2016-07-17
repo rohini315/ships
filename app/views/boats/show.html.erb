@@ -1,0 +1,23 @@
+<h1> Boat Profile </h1>
+
+	id : <%= @boat.id %><br>
+	name: <%= @boat.name %><br>
+	capacity: <%= @boat.container_size%><br>
+	
+	<% if @jobs %>
+		<% @jobs.each do |job| %>
+			boat_id : <%= job.boat_id%>
+			 job id: <%= job.id%>
+			<%= job.name%>
+			<%= job.container%>
+			<%= job.cargo%>
+			<%= number_to_currency(job.cost)%>
+			<%= locs[job.origin.to_i][0] %>
+			<%= locs[job.dest.to_i][0]%>
+			<%= link_to 'Destroy', job_delete_path(job), :method => "delete, data: { confirm: 'Are you sure?' }"%><br/>
+		<% end %>
+	<%else%>
+		<h1>No job assigned</h1>
+	<% end %>
+
+<%= link_to 'back', user_path(current_user)%>

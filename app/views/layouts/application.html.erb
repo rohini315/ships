@@ -19,6 +19,7 @@
 		<%= link_to 'profile', user_path(current_user) %>
 	<%else%>
 		<%= link_to 'log-in', log_in_path %>
+		<%= link_to 'sign-up', new_user_path %>
 	<%end%>
 	</ul>
 </nav>

@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   post "/log-in" => "sessions#create"
   get "/log-out" => "sessions#destroy", as: :log_out
 
-get "/" => "users#index"
+  get "/" => "users#index"
+  post "/jobs/new" => "jobs#new"
+
+  delete '/jobs/:id' => 'jobs#destroy', as: 'job_delete'
+  delete '/boats/:id' => 'boats#destroy', as: 'boats_delete'
 
   resources :users
   resources :jobs

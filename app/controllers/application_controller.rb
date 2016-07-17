@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  def locs
+    locs=[[ "New York",0 ],["San Juan", 1],["Rio de Janeiro",2] ,["Zeebrugge", 3],["Shanghai",4], ["Calcutta",5],["Pusan",6],["Yokohama",7],["Derby",8],["Cape Town",9],["St. Petersburg",10]]
+  end
+
   def current_user
   	if session[:user_id]
   		
@@ -18,6 +22,7 @@ class ApplicationController < ActionController::Base
 
 
    helper_method :current_user
+   helper_method :locs
 end
 
 

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		if @user.save
 			session[:user_id]=@user.id
-			redirect_to users_path
+			redirect_to users_path(@user)
 		else
 			render "new" 
 		end
@@ -20,7 +20,8 @@ class UsersController < ApplicationController
 
 	def show
 		@user = current_user
-		@users_boats = UsersBoat.all
+		@users_boats = UsersBoat.where(user_id: @user.id)
+		@locs = locs
 
 	end
 
