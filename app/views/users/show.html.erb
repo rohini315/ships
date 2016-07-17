@@ -4,6 +4,8 @@
 	name: <%= @user.name %><br>
 	username: <%= @user.username%><br>
 	
+
+
 	<% if @users_boats %>
 		<% @users_boats.each do |ship| %>
 			<%= form_tag(new_job_path, :method => "post") do %>

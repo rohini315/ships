@@ -1,5 +1,17 @@
 <h1>ADD A BOAT</h1>
 
+<%= form_for @boat do |f|%>
+	<% if @boat.errors.full_messages.any? %>  
+	<ul>     
+		<% @boat.errors.full_messages.each do |error_message| %>      
+	 	 <li><%= error_message %></li> <br />     
+	 	 <% end %>   
+	</ul> 
+	<% end %>
+<%end%>	
+
+
+
 <%=form_for @boat do |f| %>
 	<%= f.label :name %>
 	<%= f.text_field :name %><br><br>

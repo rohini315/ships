@@ -4,5 +4,5 @@ class Boat < ActiveRecord::Base
 	has_many :jobs, dependent: :destroy
 
 
-	
+	validates :name, :container_size, :current_loc, presence: true
 end

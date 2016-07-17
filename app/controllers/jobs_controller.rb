@@ -15,7 +15,7 @@ class JobsController < ApplicationController
     if @job.save
      redirect_to boat_path(@job.boat_id)
     else
-      render :back
+      render new_job_path
     end
   end
 

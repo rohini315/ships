@@ -1,5 +1,13 @@
 <h1>Jobs#new</h1>
-
+<%= form_for @job do |f|%>
+	<% if @job.errors.full_messages.any? %>  
+	<ul>     
+		<% @job.errors.full_messages.each do |error_message| %>      
+	 	 <li><%= error_message %></li> <br />     
+	 	 <% end %>   
+	</ul> 
+	<% end %>
+<%end%>
 
 <%=form_for @job, url: jobs_path do |f| %>
 	<%= f.label :name %>

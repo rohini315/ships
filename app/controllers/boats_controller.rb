@@ -12,7 +12,7 @@ class BoatsController < ApplicationController
 			@user_boat = UsersBoat.create(boat_id: @boat.id, user_id: current_user.id)
 			redirect_to users_path(current_user.id)
 		else
-			redirect_to :back
+			redirect_to new_boat_path
 		end
 	end
 
