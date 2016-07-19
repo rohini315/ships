@@ -1,21 +1,18 @@
 class JobsController < ApplicationController
   def new
-    puts "PARAMS : "+params.inspect
     @boat = Boat.find(params[:boat_id])
     @job = Job.new
   end
 
   def create
-
-
-    puts "PARAMS C: "+ params.inspect
-    @job = Job.create(job_params)
-     
+    @boat = Boat.find(params[:boat_id])
+    @job = Job.new(job_params)
+    @job.boat_id = params[:boat_id]
    
     if @job.save
-     redirect_to boat_path(@job.boat_id)
+      redirect_to boat_path(@job.boat_id)
     else
-      render new_job_path
+      render '/jobs/new'
     end
   end
 
@@ -33,9 +30,8 @@ class JobsController < ApplicationController
 
 
   private
+
   def job_params
-    params.require(:job).permit(:name,:container,:cargo, :origin,:cost, :dest, :boat_id)
+    params.require(:job).permit(:name,:container,:cargo, :origin,:cost, :dest)
   end
-
-
 end

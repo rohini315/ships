@@ -1,4 +1,4 @@
-<h1>ADD A BOAT</h1>
+<h1>EDIT YOUR BOAT</h1>
 
 <%= form_for @boat do |f|%>
 	<% if @boat.errors.full_messages.any? %>  
@@ -12,7 +12,7 @@
 
 
 
-<%=form_for @boat, url: boats_path, html: { multipart: true } do |f| %>
+<%=form_for @boat do |f| %>
 	<%= f.file_field :avatar %>
 	<%= f.label :name %>
 	<%= f.text_field :name %><br><br>

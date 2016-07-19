@@ -1,8 +1,11 @@
 <h1> Boat Profile </h1>
-
+	<%= image_tag @boat.avatar.url(:medium) %><br>
 	id : <%= @boat.id %><br>
 	name: <%= @boat.name %><br>
 	capacity: <%= @boat.container_size%><br>
+ 
+	<%= link_to 'add Job', new_boat_job_path(@boat) %>
+
 	
 	<% if @jobs %>
 		<% @jobs.each do |job| %>
@@ -12,9 +15,11 @@
 			<%= job.container%>
 			<%= job.cargo%>
 			<%= number_to_currency(job.cost)%>
+			current_loc : <%= locs[@boat.current_loc.to_i][0] %>
 			<%= locs[job.origin.to_i][0] %>
 			<%= locs[job.dest.to_i][0]%>
-			<%= link_to 'Destroy', job_delete_path(job), :method => "delete, data: { confirm: 'Are you sure?' }"%><br/>
+			<%= link_to 'Destroy',  boat_job_path(@boat.id,job.id), method: :delete, data: { confirm: 'Are you sure?' }%>
+			<br/>
 		<% end %>
 	<%else%>
 		<h1>No job assigned</h1>

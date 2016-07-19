@@ -8,18 +8,17 @@
 
 	<% if @users_boats %>
 		<% @users_boats.each do |ship| %>
-			<%= form_tag(new_job_path, :method => "post") do %>
-				<%= ship.user_id%>
-				<%= ship.boat_id%>
-				<%= ship.user.name%>
-				<%= ship.boat.name%>
-				<%= link_to ship.boat.name, boat_path(ship.boat_id)%>
-				<%= ship.boat.container_size %>
-				<%= locs[ship.boat.current_loc.to_i][0] %>
-				<%= hidden_field_tag 'boat_id', ship.boat_id %>
-				<%= submit_tag("add job") %>
+				
+				user id :<%= ship.user_id%>
+				user name:<%= ship.user.name%> |
+				<%= image_tag ship.boat.avatar.url(:thumb) %> 
+				boat id : <%= ship.boat_id%>
+				boat name :<%= ship.boat.name%>
+				boat container size : <%= ship.boat.container_size %>
+				<%= locs[ship.boat.current_loc.to_i][0] %> | 
+				boat jobs : <%= link_to ship.boat.name, boat_path(ship.boat_id)%>
 				<%= link_to 'Delete this ship', boats_delete_path(ship.boat_id), :method => "delete", data: { confirm: 'Are you sure?' }%><br/>
-			<% end %>
+			
 		<% end %>
 	<% end %>
 

@@ -1,18 +1,24 @@
 Rails.application.routes.draw do
 
+  root 'users#index'
+
   get "/log-in" => "sessions#new"
   post "/log-in" => "sessions#create"
   get "/log-out" => "sessions#destroy", as: :log_out
 
-  get "/" => "users#index"
-  post "/jobs/new" => "jobs#new"
+  # get "/" => "users#index"
+  post "/boats/:boat_id/jobs" => "jobs#create"
 
-  delete '/jobs/:id' => 'jobs#destroy', as: 'job_delete'
+  # delete '/jobs/:id' => 'jobs#destroy', as: 'job_delete'
   delete '/boats/:id' => 'boats#destroy', as: 'boats_delete'
 
-  resources :users
-  resources :jobs
-  resources :boats
+  resources :users 
+
+
+  resources :boats do
+    resources :jobs
+
+  end
 
 
 
