@@ -25,3 +25,16 @@
 	<%= link_to 'add boat', new_boat_path%>
 
 
+<h1>show other's boat</h1>
+
+<%if @all_boats %>
+	<% @all_boats.each do |boat|%>
+		
+		<%= image_tag boat.avatar.url(:thumb) %>
+		boat name:<%= boat.name%> 
+		user name:<%@all_users_boats.where(boat_id: boat.id).each do |user_boat| %>
+		<%= user_boat.user.username%><br/>
+		<%end%>
+
+	<%end%>
+<%end%>

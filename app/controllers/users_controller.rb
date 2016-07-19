@@ -19,6 +19,8 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		@all_boats = Boat.all
+		@all_users_boats = UsersBoat.all
 		@user = current_user
 		@users_boats = UsersBoat.where(user_id: @user.id)
 		@locs = locs
