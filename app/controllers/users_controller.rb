@@ -19,11 +19,15 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@all_boats = Boat.all
+		@all_boats = Boat.all			
 		@all_users_boats = UsersBoat.all
 		@user = current_user
-		@users_boats = UsersBoat.where(user_id: @user.id)
+		# @users_boats = UsersBoat.where(user_id: @user.id)
 		@locs = locs
+
+
+		
+
 
 	end
 
@@ -39,6 +43,10 @@ class UsersController < ApplicationController
 	redirect_to user_path(@user.id)
 	# redirect_to '/users/#{@user.id}'
 	end
+
+	# def follow
+	# 	@follow = Follow.create(boat_id: @boat.id, user_id: current_user.id)
+	# end
 
 
 	private 

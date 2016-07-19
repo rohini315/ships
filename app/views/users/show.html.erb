@@ -26,15 +26,16 @@
 
 
 <h1>show other's boat</h1>
-
+<%= link_to 'follow index', follows_path%>
 <%if @all_boats %>
 	<% @all_boats.each do |boat|%>
 		
 		<%= image_tag boat.avatar.url(:thumb) %>
 		boat name:<%= boat.name%> 
 		user name:<%@all_users_boats.where(boat_id: boat.id).each do |user_boat| %>
-		<%= user_boat.user.username%><br/>
+		<%= user_boat.user.username%>
+		
 		<%end%>
-
+		<%= link_to "follow", follow_create_path(@user.id, boat_id: boat.id), :id => boat.id, remote: true %><br/>
 	<%end%>
 <%end%>

@@ -14,6 +14,13 @@ class JobsController < ApplicationController
     else
       render '/jobs/new'
     end
+
+    # redirect_to vs render
+    # redirect_to -> goes to route and controller go the whatever page your path is
+    # render -> doen't go to route it 
+    # just renerate the template
+    # error message will show up
+    # flash message can show whether you use render ro redirect
   end
 
   def update

@@ -1,6 +1,6 @@
 class BoatsController < ApplicationController
 
-
+ 
 	def new
 		@locs = locs
 		@boat=Boat.new

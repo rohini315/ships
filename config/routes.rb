@@ -11,8 +11,10 @@ Rails.application.routes.draw do
 
   # delete '/jobs/:id' => 'jobs#destroy', as: 'job_delete'
   delete '/boats/:id' => 'boats#destroy', as: 'boats_delete'
+  get '/follow/:id/:boat_id'=>'follows#create', as: 'follow_create'
 
   resources :users 
+  resources :follows
 
 
   resources :boats do
